@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/app/graphql/mutations/.keep
+/app/graphql/types/.keep
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
