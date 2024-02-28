@@ -5,12 +5,24 @@ services:
       context: .
       dockerfile: Dockerfile-dev
     ports:
-      - "3001:3001"
+      - '3001:3001'
     volumes:
       - .:/opt/app
     env_file:
       - .env
     command: bash -c 'bin/setup && rails server -b 0.0.0.0 -p 3001'
+    networks:
+      - policy-service-app
+    stdin_open: true
+    tty: true
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: myuser
+      RABBITMQ_DEFAULT_PASS: mypassword
     networks:
       - policy-service-app
 networks:
